@@ -3,6 +3,17 @@ import { reset } from 'styled-reset';
 import { media } from './theme';
 
 export const GlobalStyle = createGlobalStyle`
+    *,
+    *::before,
+    *::after{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;   
+    }
+    a{
+        color: inherit;
+        text-decoration: none;
+    }
     ${reset}
     :focus {
         outline: none;
