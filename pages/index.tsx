@@ -1,19 +1,16 @@
 import styled from 'styled-components';
 import Header from 'components/Common/header';
+import Main from 'components/Main/main';
 
 const Index = () => {
   return (
     <Container>
-      <Header />
+      <Main />
     </Container>
   );
 };
 
 // style
-const Container = styled.div`
-  max-width: 500px;
-  margin: 0 auto;
-  background-color: white;
-`;
+const Container = styled.div``;
 
 export default Index;

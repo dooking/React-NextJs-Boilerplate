@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import { theme } from 'styles/theme';
 
+export const Container = styled.div`
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: white;
+`;
+
 export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -8,6 +14,18 @@ export const HeaderContainer = styled.div`
   background-color: ${theme.color.white};
   height: 50px;
   padding: 5px 8px;
+`;
+
+export const MainContainer = styled.div`
+  width: 100%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  overflow: hidden;
 `;
 
 export const ImageBox = styled.div`
