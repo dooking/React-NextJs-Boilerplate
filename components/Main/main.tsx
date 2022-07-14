@@ -17,10 +17,12 @@ function Main() {
         <Image src={MainAssetImage} alt="main-asset" layout="fill" />
       </S.ImageBox>
       <S.PlayBox>
-        <S.PlayBtnBox>
-          Play
-          <CaretRightOutlined />
-        </S.PlayBtnBox>
+        <Link href="/upload">
+          <S.PlayBtnBox>
+            Play
+            <CaretRightOutlined />
+          </S.PlayBtnBox>
+        </Link>
         <S.PlayTextBox>
           <S.PlayText>현재까지</S.PlayText>
           <S.PlayBoldText>{count}</S.PlayBoldText>

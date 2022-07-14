@@ -17,6 +17,7 @@ export const MainTitleText = styled.div`
   font-size: 3rem;
   font-family: ${fonts.family.GmarketSansBold};
   font-weight: bold;
+  margin-bottom: 8px;
 `;
 
 export const SubTitleText = styled.div``;
@@ -71,6 +72,7 @@ export const PlayBtnBox = styled.div`
   padding: 20px 24px;
   justify-content: center;
   cursor: pointer;
+  margin-bottom: 8px;
   &:hover {
     color: white;
   }
