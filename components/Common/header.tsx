@@ -1,4 +1,5 @@
 import * as S from './style';
+import Link from 'next/link';
 import Image from 'next/image';
 
 import TypoLogoImage from 'public/asset/logo.png';
@@ -6,9 +7,11 @@ import TypoLogoImage from 'public/asset/logo.png';
 function Header() {
   return (
     <S.HeaderContainer>
-      <S.ImageBox>
-        <Image src={TypoLogoImage} alt="logo" layout="fill" />
-      </S.ImageBox>
+      <Link href="/">
+        <S.ImageBox>
+          <Image src={TypoLogoImage} alt="logo" layout="fill" />
+        </S.ImageBox>
+      </Link>
     </S.HeaderContainer>
   );
 }
