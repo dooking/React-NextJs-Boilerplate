@@ -1,9 +1,16 @@
-import styled from 'styled-components';
-import Link from 'next/Link';
 import * as S from './style';
+import Image from 'next/image';
 
-const Header = () => {
-  return <S.HeaderContainer></S.HeaderContainer>;
-};
+import TypoLogoImage from 'public/asset/logo.png';
+
+function Header() {
+  return (
+    <S.HeaderContainer>
+      <S.ImageBox>
+        <Image src={TypoLogoImage} alt="logo" layout="fill" />
+      </S.ImageBox>
+    </S.HeaderContainer>
+  );
+}
 
 export default Header;

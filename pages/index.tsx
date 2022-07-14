@@ -1,8 +1,13 @@
 import styled from 'styled-components';
+import Header from 'components/Common/header';
 import Link from 'next/Link';
 
 const Index = () => {
-  return <Container>hi</Container>;
+  return (
+    <Container>
+      <Header />
+    </Container>
+  );
 };
 
 // style

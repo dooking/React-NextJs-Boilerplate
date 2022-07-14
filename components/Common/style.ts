@@ -5,6 +5,20 @@ export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  height: 100%;
   background-color: ${theme.color.white};
+  height: 50px;
+  padding: 8px;
+`;
+
+export const ImageBox = styled.div`
+  margin: 0 auto;
+  & > span {
+    width: 200px !important;
+    height: 40px !important;
+    position: relative !important;
+  }
+
+  img {
+    object-fit: contain;
+  }
 `;
