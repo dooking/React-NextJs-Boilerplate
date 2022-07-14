@@ -14,6 +14,7 @@ export const GlobalStyle = createGlobalStyle`
         color: inherit;
         text-decoration: none;
     }
+
     ${reset}
     :focus {
         outline: none;
@@ -61,5 +62,14 @@ export const GlobalStyle = createGlobalStyle`
         ${media.mobile} {
             display: block;
         }
+    }
+    body{
+        font-size: 15px;
+        line-height: 1.5;
+        text-align: left;
+        background-color: rgb(237, 240, 243);
+        word-break: keep-all;
+        user-select: none;
+        color: #000;
     }
 `;
