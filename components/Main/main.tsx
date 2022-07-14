@@ -23,7 +23,7 @@ function Main() {
         </S.PlayBtnBox>
         <S.PlayTextBox>
           <S.PlayText>현재까지</S.PlayText>
-          <S.PlayBlueText>{count}</S.PlayBlueText>
+          <S.PlayBoldText>{count}</S.PlayBoldText>
           <S.PlayText>명이 참여하였습니다</S.PlayText>
         </S.PlayTextBox>
       </S.PlayBox>

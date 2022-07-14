@@ -6,6 +6,7 @@ export const Container = styled.div`
   margin: 0 auto;
   background-color: white;
   font-family: ${fonts.family.GmarketSansMedium};
+  height: 100vh;
 `;
 
 export const HeaderContainer = styled.div`
@@ -13,8 +14,8 @@ export const HeaderContainer = styled.div`
   justify-content: space-between;
   flex-direction: column;
   background-color: ${theme.color.white};
-  height: 50px;
-  padding: 5px 8px;
+  height: 60px;
+  padding: 10px 8px;
 `;
 
 export const MainContainer = styled.div`
@@ -27,6 +28,8 @@ export const MainContainer = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
   overflow: hidden;
+  height: calc(100% - 60px);
+  padding: 16px;
 `;
 
 export const ImageBox = styled.div`
