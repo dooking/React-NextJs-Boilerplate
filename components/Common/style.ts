@@ -1,10 +1,11 @@
 import styled from 'styled-components';
-import { theme } from 'styles/theme';
+import { fonts, theme } from 'styles/theme';
 
 export const Container = styled.div`
   max-width: 500px;
   margin: 0 auto;
   background-color: white;
+  font-family: ${fonts.family.GmarketSansMedium};
 `;
 
 export const HeaderContainer = styled.div`

@@ -72,4 +72,19 @@ export const GlobalStyle = createGlobalStyle`
         user-select: none;
         color: #000;
     }
+    @font-face {
+        font-family: "GmarketSansLight";
+        font-weight: 300;
+        src: url("/fonts/GmarketSansTTFLight.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "GmarketSansMedium";
+        font-weight: 500;
+        src: url("/fonts/GmarketSansTTFMedium.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "GmarketSansBold";
+        font-weight: 700;
+        src: url("/fonts/GmarketSansTTFBold.ttf") format("truetype");
+    }
 `;
