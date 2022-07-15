@@ -2,6 +2,7 @@ import * as S from 'styles/question.style';
 import React, { useEffect, useState } from 'react';
 import { Progress } from 'antd';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 const question_list = [
   {
@@ -51,7 +52,25 @@ function Question() {
         />
       </S.ProgressBox>
       {isProfile ? (
-        <>hi</>
+        <S.ProfileBox>
+          <S.ProfileImageBox>
+            <Image
+              src={
+                'https://bidi-ai.s3.ap-northeast-2.amazonaws.com/asset/after.jpeg'
+              }
+              alt="user-image"
+              layout="fill"
+            />
+          </S.ProfileImageBox>
+          <S.PhoneNumberBox>
+            <S.PhoneNumberTitleText>전화번호</S.PhoneNumberTitleText>
+            <S.PhoneNumberDescriptionText>
+              (결과 분석 알림톡 목적 이외에 사용되지 않습니다
+            </S.PhoneNumberDescriptionText>
+            <S.PhoneNumberInput />
+          </S.PhoneNumberBox>
+          <S.SubmitBtnBox>제출하기</S.SubmitBtnBox>
+        </S.ProfileBox>
       ) : (
         <S.QuestionBox>
           <S.QuestionText>
