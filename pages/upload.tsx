@@ -1,3 +1,4 @@
+import 'antd/dist/antd.css';
 import React, { useState } from 'react';
 import * as S from 'styles/upload.style';
 import axios from 'axios';
@@ -8,36 +9,38 @@ import { FileImageOutlined, CaretRightOutlined } from '@ant-design/icons';
 import { SERVER_URL } from 'lib/constant';
 
 function Upload() {
-  const [fileList, setFileList] = useState([]);
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const [isAlignment, setIsAlignment] = useState(false);
   const [profileId, setProfileId] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
-  const [detailImageFile, setDetailImageFile] = useState('');
+  const [userImagefileList, setUserImagefileList] = useState([]);
+  const [userImageFile, setUserImageFile] = useState('');
+  const [referenceImagefileList, setReferenceImagefileList] = useState([]);
+  const [referenceImageFile, setReferenceImageFile] = useState('');
 
-  const imageUploadHandler = ({ fileList: newFileList }: any) => {
-    setFileList(newFileList);
+  const userImageUploadHandler = ({ fileList: newFileList }: any) => {
+    setUserImagefileList(newFileList);
     if (newFileList.length) {
-      setDetailImageFile(newFileList[0].originFileObj);
+      setUserImageFile(newFileList[0].originFileObj);
     } else {
-      setDetailImageFile('');
+      setUserImageFile('');
+    }
+  };
+  const referenceImageUploadHandler = ({ fileList: newFileList }: any) => {
+    setReferenceImagefileList(newFileList);
+    if (newFileList.length) {
+      setUserImageFile(newFileList[0].originFileObj);
+    } else {
+      setUserImageFile('');
     }
   };
 
   const checkHandler = (e: CheckboxChangeEvent) => {
     setIsChecked(!isChecked);
   };
-  const tipHandler = () => {
-    // gtag.event({
-    //   action: 'world-cup',
-    //   category: 'upload',
-    //   label: 'upload-tip',
-    // });
-    setVisible(true);
-  };
   const alignHandler = async () => {
-    if (!detailImageFile) {
+    if (!userImageFile) {
       alert('사진을 업로드해주세요!');
       return;
     }
@@ -47,7 +50,7 @@ function Upload() {
     //   label: 'upload-profile',
     // });
     const formData = new FormData();
-    formData.append('profile_image', detailImageFile);
+    formData.append('profile_image', userImageFile);
     formData.append('background_remove', 'true');
     setLoading(true);
     const { data } = await axios({
@@ -75,6 +78,7 @@ function Upload() {
     setIsAlignment(true);
     setProfileId(data.data.profile_id);
   };
+
   return (
     <S.Container>
       <S.ContentBox>
@@ -84,53 +88,71 @@ function Upload() {
         </S.ContentDescription>
       </S.ContentBox>
       <S.UploadBox>
-        <ImgCrop grid quality={1} modalTitle="Crop Image">
-          <AntdUpload
-            listType="picture-card"
-            fileList={fileList}
-            onChange={imageUploadHandler}
-            showUploadList={{
-              showPreviewIcon: false,
-            }}
-          >
-            {fileList.length < 1 && (
-              <S.UploadContainer>
-                <FileImageOutlined />
-                Image Upload
-              </S.UploadContainer>
-            )}
-          </AntdUpload>
-        </ImgCrop>
-        <S.HowToUploadImage onClick={tipHandler}>
-          사진 업로드 Tip
-        </S.HowToUploadImage>
+        <S.UploadItem>
+          <ImgCrop grid quality={1} modalTitle="Crop Image">
+            <AntdUpload
+              listType="picture-card"
+              fileList={userImagefileList}
+              onChange={userImageUploadHandler}
+              showUploadList={{
+                showPreviewIcon: false,
+              }}
+            >
+              {userImagefileList.length < 1 && (
+                <S.UploadContainer>
+                  <FileImageOutlined />
+                </S.UploadContainer>
+              )}
+            </AntdUpload>
+          </ImgCrop>
+          <S.UploadBoxText>User Image</S.UploadBoxText>
+        </S.UploadItem>
+
+        <S.UploadItem>
+          <ImgCrop grid quality={1} modalTitle="Crop Image">
+            <AntdUpload
+              listType="picture-card"
+              fileList={referenceImagefileList}
+              onChange={referenceImageUploadHandler}
+              showUploadList={{
+                showPreviewIcon: false,
+              }}
+            >
+              {referenceImagefileList.length < 1 && (
+                <S.UploadContainer>
+                  <FileImageOutlined />
+                </S.UploadContainer>
+              )}
+            </AntdUpload>
+          </ImgCrop>
+          <S.UploadBoxText>Reference Image</S.UploadBoxText>
+        </S.UploadItem>
       </S.UploadBox>
 
       <S.AgreeBox>
         <Checkbox checked={isChecked} onChange={checkHandler}>
           개인정보 수집 동의
         </Checkbox>
+        {isChecked ? (
+          <S.ButtonBox>
+            분석하기
+            <CaretRightOutlined />
+          </S.ButtonBox>
+        ) : (
+          <S.WarningBox>
+            <S.WarningMessage>
+              업로드 하신 사진은 온라인과 오프라인 모두에서 외부로 유출되지
+              않으며, 다른 어떠한 상업적 용도로도 사용되지 않습니다.
+            </S.WarningMessage>
+            <S.WarningMessage>
+              다만, AI 학습을 통한 성능 개선의 연구 목적으로만 사용될 수 있으며,
+              일정 기간이 지난 후에는 AI 데이터베이스에서 삭제됩니다.
+            </S.WarningMessage>
+          </S.WarningBox>
+        )}
       </S.AgreeBox>
-      {isChecked ? (
-        <S.ButtonBox>
-          Play
-          <CaretRightOutlined />
-        </S.ButtonBox>
-      ) : (
-        <S.WarningBox>
-          <S.WarningMessage>
-            업로드 하신 사진은 온라인과 오프라인 모두에서 외부로 유출되지
-            않으며, 다른 어떠한 상업적 용도로도 사용되지 않습니다.
-          </S.WarningMessage>
-          <S.WarningMessage>
-            다만, AI 학습을 통한 성능 개선의 연구 목적으로만 사용될 수 있으며,
-            일정 기간이 지난 후에는 AI 데이터베이스에서 삭제됩니다.
-          </S.WarningMessage>
-        </S.WarningBox>
-      )}
     </S.Container>
   );
 }
-// style
 
 export default Upload;
