@@ -12,4 +12,4 @@ export const CLIENT_URL =
     ? 'https://bidi-ai.com'
     : 'https://dev.bidi-ai.com';
 
-export const SERVICE_TITLE = '제목제목제목';
+export const SERVICE_TITLE = 'AI Style 궁합 분석';

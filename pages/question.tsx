@@ -40,6 +40,11 @@ function Question() {
     }
   };
 
+  const submitHandler = () => {
+    // 제출 버튼 클릭 시
+    router.push('/result');
+  };
+
   return (
     <S.Container>
       <S.ProgressBox>
@@ -69,7 +74,7 @@ function Question() {
             </S.PhoneNumberDescriptionText>
             <S.PhoneNumberInput />
           </S.PhoneNumberBox>
-          <S.SubmitBtnBox>제출하기</S.SubmitBtnBox>
+          <S.SubmitBtnBox onClick={submitHandler}>제출하기</S.SubmitBtnBox>
         </S.ProfileBox>
       ) : (
         <S.QuestionBox>

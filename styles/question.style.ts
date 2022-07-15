@@ -39,6 +39,7 @@ export const AnswerText = styled.div`
 
 export const ProfileBox = styled.div`
   margin: 0 auto;
+  margin-top: 32px;
 `;
 export const ProfileImageBox = styled.div`
   cursor: pointer;
