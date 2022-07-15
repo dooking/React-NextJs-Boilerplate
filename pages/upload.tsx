@@ -1,12 +1,12 @@
-import 'antd/dist/antd.css';
 import React, { useState } from 'react';
+import Link from 'next/link';
 import * as S from 'styles/upload.style';
 import axios from 'axios';
 import ImgCrop from 'antd-img-crop';
 import type { CheckboxChangeEvent } from 'antd/es/checkbox';
 import { Upload as AntdUpload, Checkbox, message } from 'antd';
 import { FileImageOutlined, CaretRightOutlined } from '@ant-design/icons';
-import { SERVER_URL } from 'lib/constant';
+import { SERVER_URL, SERVICE_TITLE } from 'lib/constant';
 
 function Upload() {
   const [visible, setVisible] = useState(false);
@@ -82,7 +82,7 @@ function Upload() {
   return (
     <S.Container>
       <S.ContentBox>
-        <S.ContentTitle>제목제목제목</S.ContentTitle>
+        <S.ContentTitle>{SERVICE_TITLE}</S.ContentTitle>
         <S.ContentDescription>
           사진 업로드 후, AI 최적화를 위해 얼굴 분석을 진행합니다!
         </S.ContentDescription>
@@ -134,10 +134,12 @@ function Upload() {
           개인정보 수집 동의
         </Checkbox>
         {isChecked ? (
-          <S.ButtonBox>
-            분석하기
-            <CaretRightOutlined />
-          </S.ButtonBox>
+          <Link href="/question">
+            <S.ButtonBox>
+              분석하기
+              <CaretRightOutlined />
+            </S.ButtonBox>
+          </Link>
         ) : (
           <S.WarningBox>
             <S.WarningMessage>

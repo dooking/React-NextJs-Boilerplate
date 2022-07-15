@@ -4,13 +4,14 @@ import Image from 'next/image';
 import { CaretRightOutlined } from '@ant-design/icons';
 
 import MainAssetImage from 'public/asset/main_asset.jpg';
+import { SERVICE_TITLE } from 'lib/constant';
 
 function Main() {
   const count = 1167;
   return (
     <S.MainContainer>
       <S.TitleBox>
-        <S.MainTitleText>제목제목제목</S.MainTitleText>
+        <S.MainTitleText>{SERVICE_TITLE}</S.MainTitleText>
         <S.SubTitleText>이 헤어스타일은 나한테 어울릴까?</S.SubTitleText>
       </S.TitleBox>
       <S.ImageBox>

@@ -11,3 +11,5 @@ export const CLIENT_URL =
   process.env.NODE_ENV == 'production'
     ? 'https://bidi-ai.com'
     : 'https://dev.bidi-ai.com';
+
+export const SERVICE_TITLE = '제목제목제목';
