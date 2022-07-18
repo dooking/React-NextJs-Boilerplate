@@ -125,3 +125,37 @@ export const RegisterButtonBox = styled.section`
   font-weight: bold;
   cursor: pointer;
 `;
+
+export const InputBox = styled.div`
+  margin-bottom: 8px;
+  &:nth-child(3) {
+    margin-bottom: 16px;
+  }
+`;
+export const InputTitle = styled.div`
+  font-weight: bold;
+`;
+export const PhoneInput = styled.input`
+  color: #000;
+  font-weight: 600;
+  font-size: 14px;
+  width: 100%;
+  height: 40px;
+  background: none;
+  padding-left: 16px;
+  border-radius: 8px;
+`;
+export const ButtonBox = styled.div`
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
+  border-radius: 12px;
+  width: 100%;
+  height: 50px;
+  background: #000;
+  color: #fff;
+  text-align: center;
+  line-height: 50px;
+  cursor: pointer;
+`;

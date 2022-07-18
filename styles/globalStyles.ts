@@ -72,6 +72,16 @@ export const GlobalStyle = createGlobalStyle`
         user-select: none;
         color: #000;
     }
+    .ant-modal-header, .ant-modal-content {
+        border-radius: 24px;
+    }
+    .ant-modal{
+        width: 380px !important;
+        border-radius: 16px !important;
+    }
+    .ant-modal-footer{
+        display: none;
+    }
     @font-face {
         font-family: "GmarketSansLight";
         font-weight: 300;

@@ -1,10 +1,48 @@
+import React, { useState } from 'react';
 import * as S from 'styles/intro.style';
+import { Button, Modal, Checkbox, message } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getDday } from 'lib/util';
 import DemoImage from 'public/asset/demo.png';
 
+interface UserResultProps {
+  result: string;
+  gender: string;
+  phoneNumber: string;
+}
 function Intro() {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [userResult, setUserResult] = useState<UserResultProps>({
+    result: '',
+    gender: '',
+    phoneNumber: '',
+  });
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+  const checkHandler = (type: string) => {
+    setUserResult({ ...userResult, result: type });
+  };
+  const phoneNumberHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUserResult({ ...userResult, phoneNumber: e.target.value });
+  };
+  const submitHandler = () => {
+    if (userResult.result === '') {
+      message.error('성별을 선택해주세요.');
+      return;
+    }
+    if (userResult.phoneNumber === '') {
+      message.error('전화번호를 입력해주세요.');
+      return;
+    }
+    if (userResult.phoneNumber.length !== 11) {
+      message.error('전화번호를 정확히 입력해주세요.');
+      return;
+    }
+    setIsModalVisible(false);
+  };
   return (
     <S.Container>
       <S.Feature1>
@@ -35,7 +73,26 @@ function Intro() {
           </S.RegisterDescriptionText>
         </S.RegisterDescriptionBox>
       </S.RegisterBox>
-      <S.RegisterButtonBox>사전 신청하기</S.RegisterButtonBox>
+      <S.RegisterButtonBox onClick={showModal}>
+        사전 신청하기
+      </S.RegisterButtonBox>
+      <Modal title="BiDi 사전 신청" visible={isModalVisible}>
+        <S.InputBox>
+          <S.InputTitle>신청할 상품 선택</S.InputTitle>
+          <Checkbox onChange={() => checkHandler('A')}>A 아이템</Checkbox>
+          <Checkbox onChange={() => checkHandler('B')}>B 아이템</Checkbox>
+        </S.InputBox>
+        <S.InputBox>
+          <S.InputTitle>성별 선택</S.InputTitle>
+          <Checkbox onChange={() => checkHandler('A')}>A 아이템</Checkbox>
+          <Checkbox onChange={() => checkHandler('B')}>B 아이템</Checkbox>
+        </S.InputBox>
+        <S.InputBox>
+          <S.InputTitle onChange={phoneNumberHandler}>휴대폰 번호</S.InputTitle>
+          <S.PhoneInput placeholder="휴대폰 번호" />
+        </S.InputBox>
+        <S.ButtonBox onClick={submitHandler}>응모하기</S.ButtonBox>
+      </Modal>
     </S.Container>
   );
 }
