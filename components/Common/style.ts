@@ -1,26 +1,35 @@
 import styled from 'styled-components';
-import { fonts, theme } from 'styles/theme';
+import { fonts, theme, media } from 'styles/theme';
 
 export const Container = styled.div`
-  max-width: 500px;
+  width: 500px;
   margin: 0 auto;
   background-color: white;
   font-family: ${fonts.family.GmarketSansMedium};
   height: 100vh;
+  position: relative;
+  ${media.custom(1024)} {
+    width: auto;
+    bottom: 0;
+    margin: 0 0 0 0;
+    border-radius: 0;
+  }
 `;
 
 export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  flex-direction: column;
-  background-color: ${theme.color.white};
-  height: 60px;
-  padding: 10px 8px;
+  align-items: center;
+  background-color: ${theme.color.gray};
+  padding: 10px 12px;
+  width: 100%;
+  height: 44px;
+  position: absolute;
+  z-index: 100;
 `;
 
 export const MainContainer = styled.div`
   width: 100%;
-  max-width: 500px;
   margin-left: auto;
   margin-right: auto;
   flex: 1;
@@ -33,15 +42,21 @@ export const MainContainer = styled.div`
 `;
 
 export const ImageBox = styled.div`
-  margin: 0 auto;
   cursor: pointer;
   & > span {
-    width: 200px !important;
-    height: 40px !important;
+    width: 100px !important;
+    height: 20px !important;
     position: relative !important;
   }
 
   img {
     object-fit: contain;
+  }
+`;
+
+export const LinkBox = styled.div`
+  & > span {
+    font-size: 2rem;
+    cursor: pointer;
   }
 `;
