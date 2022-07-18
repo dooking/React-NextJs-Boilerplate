@@ -24,7 +24,6 @@ export const HeaderContainer = styled.div`
   padding: 10px 12px;
   width: 100%;
   height: 44px;
-  position: absolute;
   z-index: 100;
 `;
 
@@ -37,7 +36,6 @@ export const MainContainer = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
   overflow: hidden;
-  height: calc(100% - 60px);
   padding: 16px;
 `;
 
