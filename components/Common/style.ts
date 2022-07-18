@@ -8,12 +8,12 @@ export const Container = styled.div`
   font-family: ${fonts.family.GmarketSansMedium};
   height: 100vh;
   position: relative;
-  ${media.custom(1024)} {
+  /* ${media.custom(1024)} {
     width: auto;
     bottom: 0;
     margin: 0 0 0 0;
     border-radius: 0;
-  }
+  } */
 `;
 
 export const HeaderContainer = styled.div`

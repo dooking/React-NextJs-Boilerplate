@@ -71,9 +71,25 @@ export const PlayBox = styled.section`
   text-align: center;
   font-size: 17px;
   font-weight: bold;
+  cursor: pointer;
 
-  ${media.custom(1024)} {
+  /* ${media.custom(1024)} {
     width: calc(100% - 48px);
     max-width: initial;
+  } */
+`;
+
+export const PlayBoxText = styled.span`
+  animation: blink-effect 2s linear infinite;
+  @keyframes blink-effect {
+    0%,
+    50%,
+    100% {
+      opacity: 1;
+    }
+    25%,
+    75% {
+      opacity: 0;
+    }
   }
 `;

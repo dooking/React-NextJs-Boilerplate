@@ -1,5 +1,6 @@
 import * as S from 'styles/index.style';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import MainImage from 'public/asset/boy.png';
 
@@ -28,7 +29,11 @@ function Index() {
       <S.ImageBox>
         <Image src={MainImage} alt="main" layout="fill" />
       </S.ImageBox>
-      <S.PlayBox>구경하러 가기</S.PlayBox>
+      <Link href="/intro">
+        <S.PlayBox>
+          <S.PlayBoxText>구경하러 가기</S.PlayBoxText>
+        </S.PlayBox>
+      </Link>
     </S.Container>
   );
 }
