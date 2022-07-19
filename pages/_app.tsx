@@ -13,12 +13,17 @@ import Layout from 'components/Common/layout';
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const updateReferralCountHandler = async (url: string) => {
+    if (!url) {
+      url = 'google';
+    }
     await updateReferralCount(url);
   };
   useEffect(() => {
     if (!router.isReady) return;
     const referral = router.query.referral as string;
-    updateReferralCountHandler(referral);
+    if (router.pathname === '/') {
+      updateReferralCountHandler(referral);
+    }
   }, [router.isReady, router.query]);
 
   return (
