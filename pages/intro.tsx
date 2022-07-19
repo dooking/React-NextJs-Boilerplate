@@ -22,27 +22,51 @@ function Intro() {
   const showModal = () => {
     setIsModalVisible(true);
   };
-  const checkHandler = (type: string) => {
-    setUserResult({ ...userResult, result: type });
+  const checkHandler = (result: string) => {
+    setUserResult({ ...userResult, result });
+  };
+  const genderHandler = (gender: string) => {
+    setUserResult({
+      ...userResult,
+      gender,
+    });
   };
   const phoneNumberHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserResult({ ...userResult, phoneNumber: e.target.value });
   };
   const submitHandler = () => {
+    console.log(userResult);
     if (userResult.result === '') {
+      console.log('1');
+      message.error('상품을 선택해주세요.');
+      return;
+    }
+    if (userResult.gender === '') {
+      console.log('2');
       message.error('성별을 선택해주세요.');
       return;
     }
     if (userResult.phoneNumber === '') {
+      console.log('3');
       message.error('전화번호를 입력해주세요.');
       return;
     }
-    if (userResult.phoneNumber.length !== 11) {
-      message.error('전화번호를 정확히 입력해주세요.');
+
+    if (
+      !userResult.phoneNumber.match(
+        /^01([0|1|6|7|8|9])-?([0-9]{4})-?([0-9]{4})$/,
+      )
+    ) {
+      message.error('전화번호를 형식이 일치하지 않습니다.');
       return;
     }
     setIsModalVisible(false);
   };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
   return (
     <S.Container>
       <S.Feature1>
@@ -76,7 +100,11 @@ function Intro() {
       <S.RegisterButtonBox onClick={showModal}>
         사전 신청하기
       </S.RegisterButtonBox>
-      <Modal title="BiDi 사전 신청" visible={isModalVisible}>
+      <Modal
+        title="BiDi 사전 신청"
+        visible={isModalVisible}
+        onCancel={handleCancel}
+      >
         <S.InputBox>
           <S.InputTitle>신청할 상품 선택</S.InputTitle>
           <Checkbox onChange={() => checkHandler('A')}>A 아이템</Checkbox>
@@ -84,12 +112,15 @@ function Intro() {
         </S.InputBox>
         <S.InputBox>
           <S.InputTitle>성별 선택</S.InputTitle>
-          <Checkbox onChange={() => checkHandler('A')}>A 아이템</Checkbox>
-          <Checkbox onChange={() => checkHandler('B')}>B 아이템</Checkbox>
+          <Checkbox onChange={() => genderHandler('male')}>남자</Checkbox>
+          <Checkbox onChange={() => genderHandler('female')}>여자</Checkbox>
         </S.InputBox>
         <S.InputBox>
-          <S.InputTitle onChange={phoneNumberHandler}>휴대폰 번호</S.InputTitle>
-          <S.PhoneInput placeholder="휴대폰 번호" />
+          <S.InputTitle>휴대폰 번호</S.InputTitle>
+          <S.PhoneInput
+            onChange={phoneNumberHandler}
+            placeholder="휴대폰 번호"
+          />
         </S.InputBox>
         <S.ButtonBox onClick={submitHandler}>응모하기</S.ButtonBox>
       </Modal>

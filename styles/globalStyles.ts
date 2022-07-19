@@ -75,6 +75,10 @@ export const GlobalStyle = createGlobalStyle`
     .ant-modal-header, .ant-modal-content {
         border-radius: 24px;
     }
+    .ant-modal-header{
+        border-bottom-left-radius: 0px !important;
+        border-bottom-right-radius: 0px !important;
+    }
     .ant-modal{
         width: 380px !important;
         border-radius: 16px !important;

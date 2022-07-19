@@ -143,7 +143,10 @@ export const PhoneInput = styled.input`
   height: 40px;
   background: none;
   padding-left: 16px;
-  border-radius: 8px;
+  border-radius: 16px;
+  &:focus {
+    border: 2px solid #ff2731;
+  }
 `;
 export const ButtonBox = styled.div`
   width: 100%;
