@@ -1,0 +1,13 @@
+interface Window {
+  __REDUX_DEVTOOLS_EXTENSION__: any;
+  __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any;
+  __REACT_DEVTOOLS_GLOBAL_HOOK__: any;
+  wcs: any;
+  daum: any;
+  map: any;
+  mapRoadview: any;
+  ActiveXObject: any;
+  gtag: any;
+  email: string;
+  _sharedData: any;
+}
