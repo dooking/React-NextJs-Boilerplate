@@ -3,9 +3,14 @@ services:
   frontend:
     image: node:16
     environment:
-      - VIRTUAL_HOST=test.bidi-ai.com
-      - LETSENCRYPT_HOST=test.bidi-ai.com
-    build: .
+      - VIRTUAL_HOST=${DOMAIN}
+      - LETSENCRYPT_HOST=${DOMAIN}
+
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        - MODE=${MODE}
     ports:
       - 3000:3000
 
