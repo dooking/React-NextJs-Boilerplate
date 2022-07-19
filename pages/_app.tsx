@@ -21,6 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     if (!router.isReady) return;
     const referral = router.query.referral as string;
+    console.log("env: ", process.env.NODE_ENV)
     if (router.pathname === '/') {
       updateReferralCountHandler(referral);
     }
