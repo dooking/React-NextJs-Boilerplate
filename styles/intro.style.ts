@@ -162,3 +162,23 @@ export const ButtonBox = styled.div`
   line-height: 50px;
   cursor: pointer;
 `;
+
+export const ShareList = styled.div`
+  display: flex;
+  width: 200px;
+  justify-content: space-around;
+`;
+
+export const ShareImageBox = styled.div`
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  & > span {
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 8px;
+  }
+  img {
+    object-fit: cover;
+  }
+`;

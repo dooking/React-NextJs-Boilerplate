@@ -14,3 +14,10 @@ export const updateReferralCount = async (url: string) => {
 
   return updatedCount;
 };
+
+export const savedShareCount = async (shareType: string) => {
+  const shareResult = await getFirebaseData(`${env}/landing/share`);
+  const updatedCount = { [shareType]: shareResult[shareType] + 1 };
+  await updateFirebaseData(`${env}/landing/share`, updatedCount);
+  return updatedCount;
+};

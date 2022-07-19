@@ -26,6 +26,15 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }, [router.isReady, router.query]);
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const { Kakao, location } = window as any;
+      if (!Kakao.isInitialized()) {
+        Kakao.init(process.env.NEXT_PUBLIC_KAKAO_API_KEY);
+      }
+    }
+  }, []);
+
   return (
     <>
       <Head>

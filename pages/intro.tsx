@@ -5,6 +5,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getDday } from 'lib/util';
 import DemoImage from 'public/asset/demo.png';
+import { KakaoShare } from 'lib/kakaoShare';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+
+import InstaImage from 'public/asset/instagramLogo.png';
+import KakaoImage from 'public/asset/kakao.jpg';
+import UrlImage from 'public/asset/url.png';
+import { savedShareCount } from 'lib/realtimeDb';
 
 interface UserResultProps {
   result: string;
@@ -18,6 +25,8 @@ function Intro() {
     gender: '',
     phoneNumber: '',
   });
+
+  const url = `https://www.naver.com`;
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -67,6 +76,23 @@ function Intro() {
     setIsModalVisible(false);
   };
 
+  const shareSavedToDB = async (shareType: string) => {
+    await savedShareCount(shareType);
+  };
+  const kakaoHandler = async () => {
+    await shareSavedToDB('kakao');
+    KakaoShare();
+  };
+
+  const instalHandler = async () => {
+    await shareSavedToDB('instagram');
+    window.open('https://www.instagram.com/');
+  };
+  const copyToUrl = async () => {
+    message.success('링크가 복사되었습니다!');
+    await shareSavedToDB('url');
+  };
+
   return (
     <S.Container>
       <S.Feature1>
@@ -97,6 +123,20 @@ function Intro() {
           </S.RegisterDescriptionText>
         </S.RegisterDescriptionBox>
       </S.RegisterBox>
+      <S.ShareList>
+        <S.ShareImageBox onClick={kakaoHandler}>
+          <Image src={KakaoImage} alt="kakao" width="50px" height="50px" />
+        </S.ShareImageBox>
+        <S.ShareImageBox onClick={instalHandler}>
+          <Image src={InstaImage} alt="insta" width="50px" height="50px" />
+        </S.ShareImageBox>
+        <CopyToClipboard text={url}>
+          <S.ShareImageBox onClick={copyToUrl}>
+            <Image src={UrlImage} alt="url" width="50px" height="50px" />
+          </S.ShareImageBox>
+        </CopyToClipboard>
+      </S.ShareList>
+
       <S.RegisterButtonBox onClick={showModal}>
         사전 신청하기
       </S.RegisterButtonBox>

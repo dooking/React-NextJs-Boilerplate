@@ -75,6 +75,8 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai&display=swap"
             rel="stylesheet"
           />
+
+          <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
         </Head>
         <body>
           <Main />
