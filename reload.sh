@@ -1,14 +1,14 @@
 if [ "$1" = "dev" ]
 then
   MODE=dev
-  DOMAIN=test.bidi-ai.com
+  DOMAIN=bidi.style
 elif [ "$1" = "prod" ]
 then
   MODE=prod
-  DOMAIN=test.bidi-ai.com
+  DOMAIN=bidi.style
 else
   MODE=dev
-  DOMAIN=test.bidi-ai.com
+  DOMAIN=bidi.style
 fi
 
 export MODE=$MODE
